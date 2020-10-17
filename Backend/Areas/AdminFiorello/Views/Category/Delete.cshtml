@@ -1,0 +1,19 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="row">
+    <div class="col-12">
+        <h2>@Model.Name</h2>
+        <p>@Html.Raw(Model.Description)</p>
+        <p class="text-danger">Qaqi eminsenmi???</p>
+    </div>
+    <div class="col-12">
+        <form class="forms-sample" method="post">
+            <button type="submit" class="btn btn-danger mr-2">Delete</button>
+        </form>
+        <a asp-action="Index" class="btn btn-dark mt-3">Go Back</a>
+    </div>
+</div>
+

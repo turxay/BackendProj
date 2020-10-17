@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ProductVM>
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <main>
+        <section id="product-list-title">
+            <div class="container py-4">
+                <div class="row py-5">
+                    <div class="col-12">
+                        <h1>Product List</h1>
+                        <i class="text-muted">Where flowers are our inspiration</i>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="product-list">
+            <div class="container">
+                <div class="row mainList">
+                    <partial name="_ProductPartial"/>
+                    @*@await Component.InvokeAsync("Products",new { count=16,skip=12})*@
+                </div>
+                <div class="row justify-content-center">
+                    <input type="hidden"  id="productCount" value="@ViewBag.ProductCount" />
+        <button class="btn btn-success" id="loadMore">Load More</button>
+                    <nav aria-label="...">
+                        <ul class="pagination pagination-sm">
+                            @for (int i = 1; i <= ViewBag.PageCount; i++)
+                            {
+                                if (ViewBag.Page == null)
+                                {
+                                    if (i == 1)
+                                    {
+                                        <li class="page-item disabled"><a class="page-link" href="/product/index?page=@i">@i</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li class="page-item"><a class="page-link" href="/product/index?page=@i">@i</a></li>
+                                    }
+                                }
+                                else
+                                {
+                                    if (i == ViewBag.Page)
+                                    {
+                                        <li class="page-item disabled"><a class="page-link" href="/product/index?page=@i">@i</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li class="page-item"><a class="page-link" href="/product/index?page=@i">@i</a></li>
+                                    }
+                                }
+
+                            }
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </section>
+    </main>
+
